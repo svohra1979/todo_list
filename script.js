@@ -3,9 +3,31 @@ const todoInput = document.getElementById("todoInput");
 const addBtn = document.getElementById("addBtn");
 const todoList = document.getElementById("todoList");
 const clearCompletedBtn = document.getElementById("clearCompletedBtn");
+const themeToggle = document.getElementById("themeToggle");
 
 // state
 let todos = [];
+
+// theme
+function loadTheme() {
+  const darkModeEnabled = localStorage.getItem("darkMode") === "true";
+  document.body.classList.toggle("dark-mode", darkModeEnabled);
+  updateThemeButton(darkModeEnabled);
+}
+
+function updateThemeButton(darkModeEnabled) {
+  themeToggle.textContent = darkModeEnabled ? "Light mode" : "Dark mode";
+  themeToggle.setAttribute(
+    "aria-label",
+    darkModeEnabled ? "Switch to light mode" : "Switch to dark mode"
+  );
+}
+
+themeToggle.addEventListener("click", function () {
+  const darkModeEnabled = document.body.classList.toggle("dark-mode");
+  localStorage.setItem("darkMode", darkModeEnabled);
+  updateThemeButton(darkModeEnabled);
+});
 
 // load todos from localStorage
 function loadTodos() {
@@ -75,5 +97,6 @@ clearCompletedBtn.addEventListener("click", function () {
 });
 
 // initialize/load on start
+loadTheme();
 loadTodos();
 renderTodos();
