@@ -2,17 +2,83 @@
   box-sizing: border-box;
 }
 
+:root {
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --blue-light: #eff6ff;
+  --border: #dbe4f0;
+  --text: #1e293b;
+}
+
 body {
-  font-family: sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px;
+  color: var(--text);
+  background: #f4f8ff;
+  font-family: Arial, sans-serif;
 }
 
 #todoApp {
-  max-width: 400px;
-  margin: 40px auto;
+  width: min(100%, 480px);
+  margin: 48px auto;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+}
+
+h1 {
+  margin: 0 0 24px;
+  color: #173b77;
+  font-size: 1.75rem;
+  text-align: center;
 }
 
 #formSection {
   display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+#todoInput {
+  min-width: 0;
+  flex: 1;
+  padding: 11px 12px;
+  color: var(--text);
+  border: 1px solid #b8c8de;
+  border-radius: 6px;
+  font: inherit;
+}
+
+#todoInput:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.15);
+  border-color: var(--blue);
+}
+
+button {
+  padding: 11px 15px;
+  color: #ffffff;
+  background: var(--blue);
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+button:hover {
+  background: var(--blue-dark);
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+  outline-offset: 2px;
+}
+
+#todoList {
+  display: grid;
   gap: 10px;
 }
 
@@ -20,4 +86,51 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 48px;
+  padding: 10px 12px;
+  background: var(--blue-light);
+  border: 1px solid #d8e7ff;
+  border-radius: 7px;
+}
+
+.todo-item span {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.todo-item button {
+  padding: 7px 10px;
+  color: var(--blue-dark);
+  background: transparent;
+  font-size: 0.9rem;
+}
+
+.todo-item button:hover {
+  background: #dbeafe;
+}
+
+#clearCompletedBtn {
+  width: 100%;
+  margin-top: 24px;
+  color: var(--blue-dark);
+  background: #e0ecff;
+}
+
+#clearCompletedBtn:hover {
+  background: #cfe0ff;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  #todoApp {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  #formSection {
+    flex-direction: column;
+  }
 }
