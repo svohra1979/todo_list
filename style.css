@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+#todoApp {
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+#formSection {
+  display: flex;
+  gap: 10px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
